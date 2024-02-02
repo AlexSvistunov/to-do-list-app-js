@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 15px;
+}
+
+.main-title {
+  text-align: center;
+}
+
+/* CONTAINER */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+/* END CONTAINER */
+
+/* HEADER */
+
+.header {
+  padding: 20px;
+}
+
+.header__container {
+  display: flex;
+  gap: 30px;
+}
+
+.header__link {
+  color: black;
+  text-decoration: none;
+}
+
+
+/* END HEADER */
+
+.section-title {
+  font-size: 35px;
+}
+.todo-form {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.todo-form__field {
+  width: 350px;
+  height: 35px;
+  font-size: 25px;
+  padding: 5px;
+}
+.todo-form__button {
+  padding: 10px 20px;
+  text-align: center;
+}
+.todos-list {
+}
