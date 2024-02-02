@@ -6,6 +6,7 @@
 
 body {
   padding: 0 15px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .main-title {
@@ -35,6 +36,19 @@ body {
   text-decoration: none;
 }
 
+.header__link:focus {
+  outline: 3px solid rgb(5, 255, 218);
+  border-radius: 10px;
+}
+
+.header__link:hover {
+  color: rgba(0, 0, 0, 0.544);
+}
+
+.header__link:active {
+  color: rgba(0, 229, 255, 0.451);
+}
+
 
 /* END HEADER */
 
@@ -51,10 +65,60 @@ body {
   height: 35px;
   font-size: 25px;
   padding: 5px;
+  border-radius: 8px;
 }
+
+.todo-form__field:focus {
+  border: 1px solid transparent;
+  outline: 4px solid rgba(1, 230, 255, 0.451);
+}
+
 .todo-form__button {
   padding: 10px 20px;
   text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
+
+.todo-form__button:focus-visible {
+  background-color: rgba(239, 241, 241, 0.451);
+  outline: 4px solid rgba(1, 230, 255, 0.451);
+  border-radius: 5px;
+}
+
+.todo-form__button:hover {
+  color: rgba(0, 0, 0, 0.544);
+}
+
 .todos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-list__element {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.todo-el__btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
+
+.todo-el__btn:focus-visible {
+  color: rgb(40, 1, 1);
+  outline: 1px solid grey;
+}
+
+.todo-el__btn:hover {
+  color: green;
 }

@@ -10,14 +10,9 @@ const todosArray = JSON.parse(localStorage.getItem("todos-me"))?.length
 render();
 
 function render() {
-  for (let i = 0; i < todosArray.length; i++) {
-    todosList.insertAdjacentHTML(
-      "beforeend",
-      `
-     <li class="todo-list__element">${todosArray[i]}</li>
-    `
-    );
-  }
+  todosArray.forEach((todo, index) => {
+    todosList.insertAdjacentHTML("beforeend", getTemplateTodoHTML(todo, index));
+  });
 }
 
 todoForm.addEventListener("submit", (e) => {
@@ -41,17 +36,22 @@ function createTodoInArray(value) {
   createToDoInHTML();
 }
 
+
+function getTemplateTodoHTML(todo, index) {
+  return `
+  <li class="todo-list__element todo-el" data-index=${index}>${todo}
+      <div class="todo-el__block">
+        <button class="todo-el__btn">X</button>
+      </div>
+     </li>
+  `
+}
+
 function createToDoInHTML() {
   todosList.innerHTML = "";
-  todosArray.forEach((todo) => {
-    todosList.insertAdjacentHTML(
-      "beforeend",
-      `
-      <li class="todo-list__element">${todo}</li>
-    `
-    );
+  todosArray.forEach((todo, index) => {
+    todosList.insertAdjacentHTML("beforeend", getTemplateTodoHTML(todo, index));
   });
-  // тут наверное можно оптимизировать, чтобы каждый раз не перебирать
 }
 
 function validateInput(input, label) {
@@ -66,3 +66,21 @@ function validateInput(input, label) {
 
   return true;
 }
+
+todosList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("todo-el__btn")) {
+    const liElementIndex = e.target.closest("li").dataset.index;
+    deleteTodo(liElementIndex);
+  }
+});
+
+function deleteTodo(index) {
+  todosArray.splice(index, 1);
+  setTodoToLocalStorage(todosArray)
+  todosList.innerHTML = ''
+  todosArray.forEach((todo, index) => {
+    todosList.insertAdjacentHTML("beforeend", getTemplateTodoHTML(todo, index));
+  });
+}
+
+
