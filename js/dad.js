@@ -3,8 +3,8 @@ const createTodoBtn = document.querySelector(".todo-form__button");
 const todosList = document.querySelector(".todos-list");
 const todoForm = document.querySelector(".todo-form");
 
-const todosArray = JSON.parse(localStorage.getItem("todos-me"))?.length
-  ? JSON.parse(localStorage.getItem("todos-me"))
+const todosArray = JSON.parse(localStorage.getItem("todos-dad"))?.length
+  ? JSON.parse(localStorage.getItem("todos-dad"))
   : [];
 
 render();
@@ -32,7 +32,7 @@ todoForm.addEventListener("submit", (e) => {
 });
 
 function setTodoToLocalStorage(array) {
-  localStorage.setItem("todos-me", JSON.stringify(array));
+  localStorage.setItem("todos-dad", JSON.stringify(array));
 }
 
 function createTodoInArray(value) {
@@ -51,12 +51,11 @@ function createToDoInHTML() {
     `
     );
   });
-  // тут наверное можно оптимизировать, чтобы каждый раз не перебирать
+
 }
 
 function validateInput(input, label) {
-  // еще не должно быть 1 символа!!!
-  // еще можно проверить на предыдущее значение, то есть не должно повторяться
+
   if (!input.value) {
     input.style.border = "1px solid red";
     return false;
